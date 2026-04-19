@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Employabilité Tunisie | Solutions professionnelles contre le chômage</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #0A1E2F;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* ========== MODERN NAVBAR ========== */
+        .navbar {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #C4450C, #E66A2C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span { color: #C4450C; background: none; }
+        .nav-links { display: flex; gap: 42px; list-style: none; }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1F3A4B;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover { color: #C4450C; }
+        .btn-outline {
+            border: 2px solid #C4450C;
+            background: transparent;
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #C4450C;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .btn-outline:hover { background: #C4450C; color: white; }
+        .menu-icon { display: none; font-size: 1.7rem; cursor: pointer; }
+        .mobile-menu { display: none; flex-direction: column; background: white; padding: 24px; gap: 18px; border-radius: 28px; box-shadow: 0 15px 30px rgba(0,0,0,0.05); margin-top: 8px; }
+        .show-mobile { display: flex; }
+
+        /* ========== HERO SECTION PRO ========== */
+        .hero {
+            padding: 80px 0 90px;
+            background: linear-gradient(110deg, #FFF9F0 0%, #FFFFFF 100%);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-badge {
+            background: #FEE2D6;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #C4450C;
+            margin-bottom: 24px;
+        }
+        .hero-title {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+        .hero-title .accent { color: #C4450C; border-bottom: 3px solid #FBC4A2; }
+        .hero-desc {
+            font-size: 1.15rem;
+            color: #2C4A5E;
+            margin-bottom: 36px;
+            max-width: 90%;
+        }
+        .btn-primary {
+            background: #C4450C;
+            border: none;
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-weight: 700;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 6px 14px rgba(196,69,12,0.25);
+        }
+        .btn-primary:hover { background: #9B3406; transform: translateY(-3px); }
+        .video-card-pro {
+            background: #0A1E2F;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 30px 40px -20px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+        .video-card-pro iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }
+
+        /* ========== STATS BANNER ========== */
+        .stats-bar {
+            background: #0A1E2F;
+            padding: 48px 0;
+            color: white;
+        }
+        .stats-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: center;
+            gap: 30px;
+        }
+        .stat-item h3 { font-size: 2.2rem; font-weight: 800; color: #F6A87A; }
+        .stat-item p { font-weight: 500; opacity: 0.8; }
+
+        /* ========== SECTIONS PRO ========== */
+        section { padding: 90px 0; }
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+        .section-sub {
+            text-align: center;
+            color: #547A8C;
+            max-width: 700px;
+            margin: 16px auto 56px auto;
+            font-size: 1.1rem;
+        }
+
+        /* CARDS MODERN */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 36px;
+        }
+        .card-pro {
+            background: #FFFFFF;
+            border-radius: 36px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            border: 1px solid #F0EAE0;
+        }
+        .card-pro:hover { transform: translateY(-10px); box-shadow: 0 25px 45px rgba(0,0,0,0.08); }
+        .card-img-pro {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+        .card-content-pro { padding: 28px; }
+        .card-title-pro { font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; }
+
+        /* double colonne témoignage avec VIDEO 2 */
+        .testimonial-premium {
+            background: #FDF8F2;
+            border-radius: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            padding: 56px;
+            align-items: center;
+        }
+        .testimonial-premium .video-wrapper iframe {
+            width: 100%;
+            border-radius: 32px;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+        }
+        .testi-quote-premium {
+            font-size: 1.7rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 28px;
+            font-style: normal;
+        }
+        .badge-success {
+            background: #E9F4EC;
+            padding: 8px 16px;
+            border-radius: 100px;
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #2B6E3C;
+        }
+
+        /* aides publiques */
+        .aide-premium {
+            background: linear-gradient(135deg, #FEF7EE, #FFFFFF);
+            border-radius: 48px;
+            padding: 48px;
+            text-align: center;
+            border: 1px solid #F0E4D4;
+        }
+        .flex-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 48px;
+            margin: 40px 0 24px;
+        }
+        .icon-circle {
+            background: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            box-shadow: 0 12px 18px rgba(0,0,0,0.03);
+            border: 1px solid #F1E2D0;
+        }
+        .icon-circle i { font-size: 2.4rem; color: #C4450C; }
+
+        /* BLOG IMAGES */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .blog-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid #EDE5D8;
+        }
+        .blog-card img { width: 100%; height: 190px; object-fit: cover; }
+        .blog-card h4 { font-size: 1.3rem; margin: 20px 20px 12px; }
+        .blog-card p { margin: 0 20px 20px; color: #547A8C; }
+
+        footer {
+            background: #0A1E2F;
+            color: #CFDDD9;
+            padding: 60px 0 30px;
+            margin-top: 30px;
+        }
+        @media (max-width: 900px) {
+            .hero-grid, .testimonial-premium { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.4rem; }
+            .container { padding: 0 24px; }
+            .nav-links { display: none; }
+            .menu-icon { display: block; }
+            .stats-grid { justify-content: center; }
+            .testimonial-premium { padding: 32px; }
+        }
+        @media (max-width: 560px) {
+            .hero-title { font-size: 2rem; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="container">
+        <div class="nav-flex">
+            <div class="logo">Employ<span>TN</span></div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#parcours">Parcours gagnants</a></li>
+                <li><a href="#aides">Aides & dispositifs</a></li>
+                <li><a href="#ressources">Ressources pro</a></li>
+            </ul>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#accueil">Accueil</a>
+            <a href="#parcours">Parcours gagnants</a>
+            <a href="#aides">Aides & dispositifs</a>
+            <a href="#ressources">Ressources pro</a>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION HERO avec VIDEO 1 -->
+<section id="accueil" class="hero">
+    <div class="container hero-grid">
+        <div>
+            <div class="hero-badge"><i class="fas fa-chart-line"></i> solutions 2026 · impact réel</div>
+            <h1 class="hero-title">Mettre fin au chômage en Tunisie <span class="accent">commence ici</span></h1>
+            <p class="hero-desc">Accompagnement sur-mesure, formations certifiantes et appui financier. +14 000 bénéficiaires accompagnés par nos partenaires.</p>
+            <a href="#parcours" class="btn-primary">Explorer les solutions <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="video-card-pro">
+            <!-- VIDEO 1 : témoignage impactant / solutions emploi Tunisie -->
+            <iframe src="https://www.youtube.com/watch?v=q6rHhAJnJV4" title="Stratégies anti-chômage Tunisie" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- BARRE STATS PRO -->
+<div class="stats-bar">
+    <div class="container stats-grid">
+        <div class="stat-item"><h3>+64%</h3><p>d'insertion après formation</p></div>
+        <div class="stat-item"><h3>12 400</h3><p>emplois créés (2024-2025)</p></div>
+        <div class="stat-item"><h3>47</h3><p>centres partenaires</p></div>
+        <div class="stat-item"><h3>8</h3><p>incubateurs régionaux</p></div>
+    </div>
+</div>
+
+<!-- SECTION PARCOURS GAGNANTS : FORMATION + ENTREPRENEURIAT avec IMAGES uniquement -->
+<section id="parcours">
+    <div class="container">
+        <h2 class="section-title">Parcours gagnants</h2>
+        <p class="section-sub">De la formation qualifiante à la création d'entreprise : des solutions concrètes avec un fort taux de succès.</p>
+        <div class="cards-grid">
+            <div class="card-pro">
+                <img class="card-img-pro" src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800" alt="coding bootcamp Tunisie">
+                <div class="card-content-pro">
+                    <h3 class="card-title-pro">Digital & Tech</h3>
+                    <p>Développement web, data, cybersécurité. Programmes certifiants GoMyCode, ISETs et centres de formation pro. Embauche garantie via réseaux d'entreprises.</p>
+                </div>
+            </div>
+            <div class="card-pro">
+                <img class="card-img-pro" src="https://images.pexels.com/photos/18039773/pexels-photo-18039773.jpeg?auto=compress&cs=tinysrgb&w=800" alt="artisanat tunisien export">
+                <div class="card-content-pro">
+                    <h3 class="card-title-pro">Artisanat & Création</h3>
+                    <p>Valorisez le savoir-faire local : poterie, tapis, couture. Accès aux plateformes e-commerce et subventions à l'export.</p>
+                </div>
+            </div>
+            <div class="card-pro">
+                <img class="card-img-pro" src="https://images.pexels.com/photos/16928002/pexels-photo-16928002.jpeg?auto=compress&cs=tinysrgb&w=800" alt="énergie renouvelable Tunisie">
+                <div class="card-content-pro">
+                    <h3 class="card-title-pro">Énergies vertes</h3>
+                    <p>Installation solaire, maintenance, efficacité énergétique. Un secteur en plein boom avec aides à l'installation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION TÉMOIGNAGE avec VIDEO 2 (unique et très pro) -->
+<section style="padding-top: 0;">
+    <div class="container">
+        <div class="testimonial-premium">
+            <div class="video-wrapper">
+                <!-- VIDEO 2 :  -->
+                <iframe src="https://www.youtube.com/watch?v=W7Rr_q-HQnc" title="Success story entrepreneur Tunisie" allowfullscreen></iframe>
+            </div>
+            <div>
+                <div class="badge-success"><i class="fas fa-trophy"></i> Success story 2025</div>
+                <div class="testi-quote-premium">“De diplômé sans emploi à patron d’une start-up de 15 personnes. Grâce au microcrédit BTS et à l’incubateur The Dot.”</div>
+                <p><strong>— Nadia Ben Salem, fondatrice de GreenLog Tunisie</strong></p>
+                <div style="margin-top: 24px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <span><i class="fas fa-check-circle" style="color:#C4450C;"></i> Contrat d’insertion ANETI</span>
+                    <span><i class="fas fa-check-circle" style="color:#C4450C;"></i> Financement FORDIA</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION AIDES PUBLIQUES + IMAGES & INFOS -->
+<section id="aides">
+    <div class="container">
+        <h2 class="section-title">Dispositifs publics & accompagnement</h2>
+        <p class="section-sub">ANETI, FORDIA, microcrédits, primes à l’emploi : maximisez vos chances.</p>
+        <div class="aide-premium">
+            <div class="flex-icons">
+                <div><div class="icon-circle"><i class="fas fa-building"></i></div><h4>ANETI</h4><p>Contrat d’insertion + formation</p></div>
+                <div><div class="icon-circle"><i class="fas fa-building"></i></div><h4>FORDIA</h4><p>Aide à la création d’entreprise</p></div>
+                <div><div class="icon-circle"><i class="fas fa-hand-holding-usd"></i></div><h4>BTS Microcrédit</h4><p>Jusqu’à 15 000 DT</p></div>
+                <div><div class="icon-circle"><i class="fas fa-laptop"></i></div><h4>Digital TN</h4><p>Certifications gratuites</p></div>
+            </div>
+            <img src="https://images.pexels.com/photos/4427822/pexels-photo-4427822.jpeg?auto=compress&cs=tinysrgb&w=1000" style="width:100%; max-width: 500px; border-radius: 28px; margin: 24px auto 0; display: block;" alt="atelier ANETI Tunisie">
+            <p style="margin-top: 28px; font-weight: 500;">📌 88% des jeunes ayant suivi un parcours intégré (formation + stage + aide) retrouvent un emploi dans les 12 mois.</p>
+        </div>
+    </div>
+</section>
+
+<!-- RESSOURCES PROFESSIONNELLES : IMAGES + CONSEILS (pas de vidéo supplémentaires) -->
+<section id="ressources" style="background: #FEFBF5;">
+    <div class="container">
+        <h2 class="section-title">Ressources & outils pro</h2>
+        <p class="section-sub">CV, entretien, recherche de stage : les clés pour décrocher votre poste.</p>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxQTEhUSExESFhUXGBkVFhcXFhUVFRgYFxYaFhYWFxUYIiogGholGxcXITEiJSkrLi4vGB8zODMtNyotLisBCgoKDg0OGhAQGy0iHyYtLS4tKy0tMC0wLS0tLS0uLS0tLS0tLSstLTUtLS0tLSstLS0rLS0tLS0tLS0tLS0tLf/AABEIAQsAvQMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAAAgMEBQYBBwj/xABREAABAwIDAwYHCgwDBwUAAAABAAIRAyEEEjEFQVEGEyJhcZEUMlJygZLRBxUjM0JTVKGxshYXNWJjc5Oio7PB0nTh8CVDRGSC0/EkNITD4v/EABkBAQEBAQEBAAAAAAAAAAAAAAACAQMEBf/EACYRAQEAAgEEAgEEAwAAAAAAAAABAhESAyExUQQTQSJhseEFMpH/2gAMAwEAAhEDEQA/APW0IQgEIQgEIQgEIUChtmg94Y2qCXEhtnBryASRTeRleQATDSdDwQT0KMzH0yxlQPBZUyhhv0s/iwNb/VeVG2vt7DYbKK9dlMu8UGS4jScokx16ILJcVZtHa+GbQbXqV2Ci4ty1ASWuJktyltzoTbgmMZXwlGi2tUrNZScAGOJEODum0NtJ42vHUgug4cRfRdWfZt7BBjK/hbMjn82102z5RLXWlpytaelHFWlLalF1SrRFRpqUQDVbeWBwzAkm2l0ExCq8Lyiw1Si/EMrtdSp2e8B0NsDcROjhu3pFblNhGtpvdiGBtRj6lM9KHMptLqjhA+SAZnggt0Km2byqweIqClRxLHvIJDQHSQBJNxwVygEIQgEIQgEIQgEIQgEIQgEIQgZxdIvY9gdlLmuaHcC4ET6JlVeAq1CyjRdgy0syB+Y0zRp82IDqbgSXXAyQ0HScuiukIM7gNnVBicjmRQovqVqLiZzPr6AXkc3nxLYiIfTg2IFByx2JifDHYmjh+fbUw4o9E0s9JweDIbWBaQQCNDao/Tf6Cq/bm0vB6ecML3FzWNaDEudoJWXKYzdVhhc8pjj5rzyvyZx1Slg8K6hRLaQq1qmbJToZ6j3ZacUR4zWmZa2CXm51XW7Cxvg+DL8Nzj8FUqsNFzmRVpuymnUYT0TliACJsDC1Z5S1mVKbK+D5sPLRIqBxGY5QYA47kjH8qK4q12YfAurMoWqVDUFMAhuZ2o3Drk8FfQ317Zh+PO+386Ov070NXP8APjXf+Nsc/kli6lGm2rQIFTGMc9rRh2VGUcrm1KtQ0mtaXHNO820S8PsDaFBmPZzT6r6rKWHp1AW9Om2WF8kyIpAC95I1W55PcpPCaVR7qJpvpuDHMzBwuAWkOAG48FbVK72wX04B0Mgrz/J+Vh8fO9PqdrNb7W6343Z2On071MeWPh5nhOTWNw7MZh/B2llfDNymi/MznacNA6cEOcM7jaJIvwXsDkliqGMwLixzsO1pqOktPM1KtAitTIm45wDSR0u0r1JC77RpleRey6lGrjnVKWQVMU99InL0mEmCI0F1qkIWNCEIQCEIQCEIQC5KS5yadWQPyiVE8ICPCQglyiVE8ICPCAglyiVE8ICPCAglyqrlJg6lWk3mg0vZUZVAJgOyGYlSvCAjwkKcsZlLKvp53DKZT8M1i8Fi8RVol9BlJjC3SoHNAa8OcQ2SZMBMY7BYylWxXNYSnWZXLnNfzrabmF9PmzYkSR2elazwkI8JCv49+m2+d+d/1o+TnevMZ/rrxr+9s9yS2NXpUa3PNax9R4cGBwcQGtDbuFpK0NfO8BuSLgk5gdARpHWjwkI8JC8vzPi4/K6t6mVstklk8anjzLTo53pYTGfhLlEqJ4QEeEBelCXKJUTwgI8JCCXKFGFdOtegdQuArqAQhCCJiKkKoxWMhT8c6yy+0ayDDY3l/i21HtHMw17miWGYDiBPS4BM/jCxn6H1D/cs3jj8LU8933imF7Jhj6eblWr/ABhYz9D6h/uR+MLGfofUP9yyiE4Y+jlfbV/jCxn6H1D/AHI/GFjP0PqH+5ZRCcMfRyvt6HyQ5YYnE42hQqc3kqOcHZWkOtTc4QZO9oXqvvc3i7vXhXuc/lPC+c/+TUX0CuHVkl7OvTu4h+9zeLu9Hvc3i7vUxUjuUbMmJe1hJw4c6CcoqBuZstMG2ZjmzB0XOS3wu5SeU/3ubxd3o97m8Xd64dq0Q40zUbnAktuTZuci2rst41jcm/fimSwMexwc4NJzQBNI1QQYhxygGJEAynGnKHfe5vF3ej3ubxd3peCx9OtPNvDoiYnR12m+47joVA2ft4VAXmmWUoc7nC5hDchgioAZpu3weBTjWcome9zeLu9d9728Xd6a9+6GUO51sFxbo6cwGYtyxIMX0XPfmlJl7MgZTe1wdJdzpcGgNA35bRMybWTjTlEgYFo3u7042iBxUOptzDtDSazAHDMDeMubLOlhmBBnTerFLLGyykhLTbdSlhY11CEIKrH6LJbTWtx+iyO1EHkeM+Mf57vvFMqdtzCmliKtM6h5Pod02n0tcD6VM5KbE8KrZXSKbBnqkaxMBo/OcbdgJ3L271NvLrvpB2bsqtiCRRpPfGpEBo857oaPSVbu5EYwCclMnyRVpz9Zj616Q8so0jlaGU6bSQ1tgABJ9PWblYzauJxjAMVTrmo10RQa2MhABc0gjpRxmTNty8+XyNPRh0OTH47A1KLslWm9juDhEjiDoR1iyjr1qjUpY3DM5xsse0Ojex0QSx25wM9u+y8y2zs12HrPouM5TZwsHNIlrh2gjsMjcu2HU5OOeHFbe5z+U8L5z/5NRfQK8J9yvBmptKk7dSbUqH1DTH11Avdly63l06fgis0lpDXZXEEB0TBixi0wdyzzuSgDMjK7xNF9B5dLwQ6CHAEjLD5dH5x7VpELnMrPCrjL5UbdgFtZ1VtRt3Go0OY5xbULMmYQ8NjfGWd0wm8Hya5trGNrnKyoao6AzZnUXU33Bi7nZxa2l92gQt55M+vFUbE2O6g57nVRUL202Ehrmn4PN0iXOcSTmv1qJU5Ml5calcGabqeZtIMqOkgh1ZwMVC0tEWG9aJCznd7OGOtM3iNkVhVp1RUY6q6qXvfkimwDDupN+Czydw8aZdOgS6fJosbDK5ByUm3aYdzTnvdmDXAlrjU0BERqVeVsO13jDq7yD/QJDcG0EG8gyLneZ7lvOs+uKRvJcik+nz3jUX0Z5vTPWdVzRm3Zoid2q0aie97Ijpd57+1SgFmWW1Y4yEN1KcCbbqe1OBSp1CEIKrH6LI7V3rXY/RZHau9BWe6RyYdUpU8ZRbLmU2trNGpYB0agG8tuD1R5Ki+5swDC1H2l1YtJ6mU2Fv11Hd69OwfxbPNb90Kpr7EpUmvdRphmd/OPa3xc0BpcG6NkASBa3aunP9PFHH9W1Xj2F9N7GiS5rmgWEktIAkqprV6zaXNgtqVOYHQpiQCGxmNSYgkHRvpKt8VX5tpeAS4NOWOManqE/WomzMCaYL3VMznDcMoaBMNaBwXyet8zDv8As+r8foXGbv5ZTkLjjzDWH5Jc2NCLzEbtUj3RqYLsM8DpOY9lrk5XgtEbzNQhavbGGYyHNZDy4aC7ibX4laXZ2wqYNKtUYHVqbSGk3DMxlxaNM26dYFt8+34nyJ1Meenh+T0uOWlb7mfJk4SiX1RFarBcPIaJyM7bknrMblL90raGJoYPPhcwdnaKj2iXMpw4lw4dINBO4E6ajRUdUnH4l7MmSkamZ7WOhwbladXmdY4da9HLeW3HWpp4yOVAIP8AtbaAMkNkk2khpcA3hBgHuNgh3KkyQNq44jcczm732cMh3CmJE3c4wYAPtrqz8xApkgfKzD021SRiH/NH127uzq+xXznpHG+3hG0+Vldrm8xtLFvbllxe4tIdvA4jQ+lQ/wAMcb9OxH7Qr6C8Jf8ANH12W6tdUo1nyPgz19IW9q37J6ON9vOvco2zicQ6uMRVqVKTQ3K97yIfPitdaZbcjdA0m/ovQ8v+I72ofVfaKczr0gIsO/U9ydYSRcQeGv1rlld3a8Zrsa6Hl/xHe1HQ8v8AiO9qehELFGTk8v8AiH2p2mTAnWBPbF0pCwNt1PanAm26ntTgQdQhCCqx+iyO1d612P0WR2rvQbHB/Fs81v3QnlW47aAw+EdXLS4U6WfKLTDJid3asRheWWOqAOadmiQHZXGtnaHAkBwDtbfWFWONvdNykbLaexs8ZCBBBLToYMx1aDimG7LqzfLGtjv14cVito8vsdRDSW4F4Jc2abargCwwQTnETeOwqD+NLGfN4X1Kv/cXmz/xnTzvLX/K74/OzxmnqGH2U0OD3dJwuOAOkjrVisbyB5W1cdzrKjKbXU8rpYHZSHSIIc4kGW8bz1LX5XcR3f5rrj0p0pxk055dS53lT1HVO1N3aPtTOGdMHiJ7xKRtKu9gZkpGpNRrXQ4NytJu++scOtXPKb4R8TQBe74Fjp3mlMy2DLpE2sgUBIdzLAZBnm7yADIvrOnYprqrpIFOQPlZmjdw1C4Kz/mjqR4zd3+U9yaNouGBZZtJrQTfLTI+wp3n6keLfhkdvA/O11S/CH7qRP8A1st1dqWar5Hwfb0ha31po2bpVajpsBwlrgPt7PrTjRU3mn3O07+1Dqr4EU5J1GYCLC077z3J1hJFxB4TP1rGmoqcafc728EEVONPq6Lvan0IBCEIG26ntTgTbdT2pwIOoQhBVY/RZHau9a7H6LI7V3oNhhmA0mggEFgBBuCC0AgjeFQHkls4/wDCM9WoB3Cy0OC+LZ5rfuhQGsG/L9Vr7/hLzfvWy2eGWSq13JHZw/4RndV3elB5J7O+is3jSru9KtTSJFmangNBpPwnWdCgUCdWddwOuRZ/ZBW8svZxnojZuzcNhwW0aXNh3SOUVBNtSezipgcw2l1+POb+M/1UcYczBbI1PRAFgSPl+jRdpUnSDlPjSZAmJmfH7/qCzbdLKjqnau7tH2pqjqlYvFMpMNSo9rGNuXOIa0brkrBCxVAGo48yxxt0jSzEy2DLpE2suDDiQeZYCCIPNXEAXBmxnTsUb8MsB9Ow37RqPwywH07DftGquN9M3EvDtLD0aTWzExSLZjSYdulO8/Ujxb+Yd8fna6qv/DLAfTsN+0au/hhgPpuG/aNWcb6NxY06tQkiAOGZhFvW10TgFTjT7nabt/amNn7YoVwTRrMqgGHGn0wDrBy6KVzw4O9V/sTTSCKnGn6rvbwhBFS8FnV0Xad6Xzw4O9R/sRzw4O9V/sWBxCb54dY6y1wHpJFk4gbbqe1OBNt1PanAg6hCEFVj9Fkdq71rsfosjtXeg2WD+LZ5rfuhQec8079KNt1+l1hTsF8WzzW/dChtcNzqdrfG/aMv+vQg67EOAsQI/V9tunAhDsS7QEG8W5uOoXfr9qXDIGaoAfPBv2710c2L871Xe2Lf1EoEeFOmxE8Pgr8T4+6NEqniHSOkNY/3d7wY6U/1+xL6E/GCYsMw0jWPTK5TFO0VAbgjpgydw65QTqOqouX/ACdfjsKKVN7WvbUFRodIY6GublcQDFnTMG4CvaOq7i3kAFpAMgXa502Nobf0rZdXbLNx5seSu05JFLZ4kkmHPm+bQxaM1iLjK0aC4/kttI64fZl93TLd1yI1EfbxXoZrvmMzJIBHwdSOF76TCXFbyqXqv/u7FfO/sni8vx3IjaNWmaZp4EC1xUqZrOc6ZIuTmIJOqq/xW4//AJb9q7+xe3BVlTEOkxWpgB1wRfLOkxrEJ9th9cZX3OeR9fAvq1KxaS9oYG03ZmwDmzOLovuAjjxW55w+Q7932qCa1T52lN7ZXGY17k5hcSZ6dVhsIi3S+Vu00hTllu7qpNdkrnD5Dv3fajnD5Dv3fakDFs8tt9LoGLZ5bd2/jcfYVLS+cPkH0lsfUT9iVTbAA4ADuCaGMp+W3eNd4iftCfQNt1PanAm26ntTgQdQhCDzfF8oa5+U31Qs9tDbNUz0h6oUvEqkx29drI5yvZtnGaVM/mM+6FFaxx8u+l6u43m1rSpOzfiaX6tn3QleCM8kLi6Ij5iwdc7zVmPVkargBJvn1n/ei153a+1WLWwIAsuoK/KZg5o6jV3AkAGPq9C7SmQYd4w+cteRaNLdgU9CBdHVSFHo6ruLqFoBBaLgXDjuNhlvKB9ChHEPmJpyQCOjU7D2CYS/hv0Xc/r/AMlumbSlWVXPkgF9ifk1/tB0t2KzVZUxT5MVsOAHXDpnLOmvjRCxpRJLp+EgRNqwJExxF+uDokAONyamlo54X3Zr8e+QlOxFT5zDg3t0jMa793pS8JijPTq0TYRlMdK+bXdpHpQIZMQed1vatMboJPWZ7BwTjKL3AuLiCdBNVscejmUgYun84y+nSC4MXT+cZ6w33H2FA0cPU8sd9SbCBfN6Tx+tTEwMZT+cZw8YbtftHen0GN2nt6sytUY1zYa4gdEFMfhLiPKb6rVE23/7mr55UNd5jNOe6t/wlxHlN9VqPwlxHlN9VqqEJxjN1CxKpMdvV3iVSY7elbHq+Lq1WYEuoNzVW0AaYiZcKYiBvPVvXlmF5QuI+G2ljmOgZg0us6+YZMkAA7gdOEw32HZvxNL9Wz7oXcLjWvpNrAkNc0PEiCA4SJG430XPHKT8KuO3jX4ROiffHHTHi53XMM+WGECDzgiL9C4uq2vyoxeZ2XGYotk5ZqOnLNp0vHUveTi2+Vx3HdqlsqA6FX9k9J4X2wHuXbUxNcVvCKlR9MZcj3uIOYzmaDNxGU9XpW7Jb5Z9c+1PFC55Xd2uTUKwxNp1i/bF1JUejqlYqsWgEBusdJ2Ub9DBv1KWnkKGcW7TLTmAQOc14/J4xdK52r8039p/+VumbSlV1ajpIBfYndW/oOpWgUF+IqzYUiM0eNByzrrrpZY0gvJdM1IET8bppYRrpPpSAXGCXVBa0c9ruzW/826k8cRV8in6an+v9BOYWs8k5wwWEQ4G5mQb7rd6COxxiJqa3tWmNBEjrv2BOMpPcC7MROgzVG9tjcdSmZxxHejOOI70EU0KnlD1nzYR/mVMSecHEd6Ug8626f8A1FXzyq5lcE5Zvf6on7QpvKM/D1vOKqth46iTiKDp57K2o05bBodB6W6ZNupdrlqRzk2nIQhWlCxKpMdvV3iVSY7epqo9kwE8xTjXm2R25Am9nUi1ro5u7i7ohoBJguLslpJkzrdO7O+Jpfq2fdC5h6TQwgUyASZbrvj+krg6FnnPzP3kDnN+T95Mmm35l31e1dAAgii+0x4tvr3yUEpsxeJ6tF1Nc8Z8R+6/R9qVSqE6tc3tj+hKB6jqnyExR1UhBzKOAXUnnBxHeEc4OI7wgUqerUEkTT1M3p9XFm6CrbnBxHeEc4PKHeEFY5wLpzNgRJ+DtMAu8Q3Ouu9NtcDBzMFrfFXIM+Ra4g9gVvzg4jvCOdHlDvCCqYWx4zNdfgrDcR0IuT9Sdp0S4FwDQDcAc2Rv3lm7TfvVhzo8od4XOcHlDvCCD4K7TI0dfwdrQTGTebns9CsUkPB3jvSkHmvKX4+t5xWQ2Gf9o1R/y3/2NWu5S/H1vOKx+xPylU/wp/mtXW+IiNWhCF0QhYlUmO3q7xKpMdvU1UeybOPwNP8AVs+6FAdyqwQt4bhf21P2pWLwBr4E0A7KalAMDtYzUwLjeOPUsFhORuNpgDwXAPIDQS57nTlBaCLCJBM2uYOoC544y+aq2zw3f4V4H6bhf2rPaj8K8D9Nwv7VntWMHJjHTPgmAHi6OPySHbwY3+iOCo3+5tjiScuHEkmBUMCdwtormGPtPLL09cwW06NZpdSqsqNBgmmc4B4Etm6kc6OMdoIHeVi/c75LVsEaz60E1MjQ1hDgAzMcxJi/SiItfitpnPkH0lsemCueUkvZcts7nqOqznulbMxGIwfN4aSc7TUYCGmpTAcC0E2Ny10b8u/Q6HDNiBwEdwT1aoRoxzupsT9ZAWS6uyzc08YHJY79iVjc/Ly2Mx8o6W7utJZyXfInYtSIuARM9PR2a/jM10ylexDGO+j1v4X96kU3kiS0t0sYm4B3EjfHoXT7an648WbyWdb/AGLWGkjMDxnpF3WItu3yVRDkNjvoNTuZ7V9EoSdas+uPNvco2FicK6ua9N9Km4NDWETLwfHAbIEC075HBeiZ28D6jvYuV6rm6U3O80sH3iP9FMtxj/o9XqvS4eeoyy5Xa5NTR/O3gfUd7EZ28D6jvYlsdOojW0jiY04xKUpaZc5p+ST1ZDfvEJymCAAdYE9sXSkIPNOUvx9bzisfsX8pv/wp/mNWw5TfH1vOKx+x/wApv/wp/mBdb4iI1aEIXRCFiVSY7ervEqkx29TVR7Js8xRpmCfg2WESeiONkxzleR0bb+gyd36Xt+pP7PnmacRPNsidPFCi5Lj4UdnPOg6Rb/Wq4rS21nRelUJ4zS/vXefd81U76X96TSz5RHNkRY5nGR2wlzU4U+93sQc593zVTvpf3pbahPyHDtLP6OXGl+8MjqJ9iX0ur60pDtHVGNAIE0xUvp0eG7NZFHVGMiBNNrxwJaN351ljUNsfRPTNDjPlaTCk06DCOlRY28wQwm4BOlpm3oUdrh9GZ1nNR4776TCkU2MIl1Om2+hyHcJ03zb0IHKWHpgy1jARpAAPXon0xSpUwei2mDugNnr09KfQRMZEiaLX21Jpgj1tyjsI+itHC9GdO3XUKRjHwR8Gx3WXMEeso7Kn/L0x/wBdLh9uoQSGUKRAmnSB0iGG0n/ynaNJg8RrB5oA+xNtbTIEtpA8Ogd5TtFrPkhn/TH9EDqEIQeacpvj63nFY7ZP5Td/hT/MC2PKb4+t5xWO2V+Uz/hj/MXXLxETy1iEIXRCFiVSY7ervEqkxymqj2TZ4mjTEkfBsuIkdEcVFhmYXqzu+BHVN+b82VK2e0GjTBEg02fdCV4HT8hvcFxW5TokgEVKoEWBDAR6Mtkrwc/O1P4f9q54HT8hvcEeB0/Ib3BDTvMH52p/D/tSxTPlO/d9iOaHAI5ocAsaeo6rm0cRSpsNSu6m2m3V1QgNE2FzxmPSu0dVR8vuTj8dhhSpva17Hio3NORxDXNyugGBDiZg3C2a33ZfA/C7Zv0rC/V28OKDyv2b9Lwv1exZR/JLaRIdzezJAcAQ6vbOWk7tegIO66bHI7anSjwDpGfHrHLIaCG5mmGkNiN2YxFo6cMfaOWXpsGcr9mi4xeGHYQPsCc/DXAfTaHrLzjF+5lj6j3VCcGC5xcQKlSASZMSxM/iqx3lYX9rU/7a3hh7Zyy9PWtn7Xw2IBdRqMq5TBLAX5ZuAYFlLAYPkfw3exYr3O+R1bAvq1KzmOc9oYG03EtgHMXOLgLzYCLXve24znyD3t9q55SS9nSW67kEM8j+GfYutc0aNI7GOH9ErOfIPe32oznyD3t9qloNYfnDta4D0kiycTec+SfSRH1JVNsADgAO4Qg825TfH1vOKx2y/wAp/wDxnffWy5S/H1vOKx2zR/tMHjh3j99db4iJ5atCELohDxKo8aNVfV2qqxVJTWx65s34ml+rZ90KQo+z/iqfmM+6FIlcHUIRKJQCESiUC6Oq7iqTnAZTB7XD7pC5RN0/KCIMO8fKG/U1Drbe6/8AQrngr5HSsNOlUn09K4njuKmSiUEQYd9ukLTvqGZvfpIpYRwIJeSBfxqk6dboiVLlEoG+YEzL/XdHdMJIwwiM1Td8t82va9k9KJQNeDiIl+hHjum/XOqPBxEZn6z47575mOpOyiUDLcMAZzVPS95HHQlPrkolB5tyl+PrecVkNn/lJn6ip9q2XKFs163nFZLDYdzdoU3Fpy81UGaDlkmwniut8InlpEIQuiDb2qNUoqYUkhBXHCDgueBjgFYwiFmmq7wMcAjwMcArGEQmjau8DHAI8DHAKxhEJo2rvAxwCPAxwCsYRCaNq7wMcAjwMcArGEQmjau8DHAI8DHAKxhEJo2rvAxwCPAxwCsYRCaNq7wMcAjwMcArGEQmjaEzCjgFIp0gNyeAXQmh1oXUIWsCEIQf/9k=" alt="CV moderne tunisie">
+                <h4>Modèle CV gagnant</h4>
+                <p>Utilisez nos templates certifiés ATS, mis en avant par les recruteurs tunisiens.</p>
+            </div>
+            <div class="blog-card">
+                <img src="https://cos-njord-dgefp-1j1s-prod.storage-eb4.cegedim.cloud/strapi-media/conseils_entretien_d_embauche_94a3f41833.webp" alt="entretien recrutement">
+                <h4>Préparation entretien</h4>
+                <p>Simulation avec un RH, questions pièges et techniques de négociation salariale.</p>
+            </div>
+            <div class="blog-card">
+                <img src="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=600" alt="freelance Tunisie">
+                <h4>Freelance & Remote</h4>
+                <p>Plateformes internationales, statut auto-entrepreneur et opportunités à l'international.</p>
+            </div>
+            <div class="blog-card">
+                <img src="https://images.pexels.com/photos/5632370/pexels-photo-5632370.jpeg?auto=compress&cs=tinysrgb&w=600" alt="financement start-up">
+                <h4>Financement start-up</h4>
+                <p>Levées de fonds, business angels, concours national d'innovation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 48px;">
+            <div><div class="logo" style="color:#F3C9AD;">EmployTN</div><p style="margin-top: 12px;">Solutions haute qualité contre le chômage<br>Accompagnement personnalisé & résultats.</p></div>
+            <div><h4>Contact stratégique</h4><p>contact@employtn.tn<br>+216 31 234 567</p></div>
+            <div><h4>Partenaires officiels</h4><p>ANETI · FORDIA · BTS · GIZ Tunisie</p></div>
+        </div>
+        <hr style="border-color: #2C4A5E;">
+        <p style="text-align: center; margin-top: 32px;">© 2026 EmployTN — Initiative nationale pour l’emploi durable en Tunisie</p>
+    </div>
+</footer>
+
+<script>
+    const toggleBtn = document.getElementById('menuToggle');
+    const mobile = document.getElementById('mobileMenu');
+    toggleBtn.addEventListener('click', () => mobile.classList.toggle('show-mobile'));
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('href').substring(1);
+            const target = document.getElementById(id);
+            if(target) { target.scrollIntoView({ behavior: 'smooth' }); mobile.classList.remove('show-mobile'); }
+        });
+    });
+</script>
+</body>
+</html>
